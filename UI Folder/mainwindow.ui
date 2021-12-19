@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>795</width>
+    <height>528</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="pushButton_8">
+          <property name="text">
+           <string>Import XML File</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="checkForErrors">
+          <property name="text">
+           <string>Check for errors (validate)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_format">
+          <property name="text">
+           <string>Format (Pretiffy)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_convertToJSON">
+          <property name="text">
+           <string>Convert to JSON</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Minify</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="button_Compress">
+          <property name="text">
+           <string>Compress</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>DeCompress</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_clearAll">
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Clear all</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_help">
+          <property name="text">
+           <string>Help</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_Close">
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="text">
+           <string>Close</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPlainTextEdit" name="plainTextEdit">
+      <property name="lineWrapMode">
+       <enum>QPlainTextEdit::NoWrap</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>795</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionImport_XML_File"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionmaximize"/>
+    <addaction name="actionminimize"/>
+    <addaction name="actionNormal_size"/>
+    <addaction name="separator"/>
+    <addaction name="actionMode_switch"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoom_in"/>
+    <addaction name="actionZoom_out"/>
+    <addaction name="actionZoom_to_default"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionCheck_for_errors"/>
+    <addaction name="actionFormat"/>
+    <addaction name="actionMinify"/>
+    <addaction name="actionCompress"/>
+    <addaction name="actionDeCompress"/>
+    <addaction name="actionRestor_XML"/>
+    <addaction name="actionConvert_to_JSON"/>
+    <addaction name="actionClear_all"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout_us"/>
+   </widget>
+   <widget class="QMenu" name="menuedit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionCut"/>
+    <addaction name="actionCop"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionfont"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuedit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionImport_XML_File"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionSave_as"/>
+   <addaction name="separator"/>
+   <addaction name="actionfont"/>
+   <addaction name="separator"/>
+   <addaction name="actionCheck_for_errors"/>
+   <addaction name="actionFormat"/>
+   <addaction name="actionRestor_XML"/>
+   <addaction name="actionConvert_to_JSON"/>
+   <addaction name="actionMinify"/>
+   <addaction name="actionCompress"/>
+   <addaction name="actionDeCompress"/>
+   <addaction name="actionClear_all"/>
+   <addaction name="actionMode_switch"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoom_in"/>
+   <addaction name="actionZoom_out"/>
+   <addaction name="actionZoom_to_default"/>
+   <addaction name="separator"/>
+   <addaction name="actionHelp"/>
+   <addaction name="actionAbout_us"/>
+   <addaction name="separator"/>
+   <addaction name="actionClose"/>
+  </widget>
+  <action name="actionImport_XML_File">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/import.png</normaloff>:/resources_images/img/import.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import XML File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionFormat">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/prettify.jpg</normaloff>:/resources_images/img/prettify.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Format</string>
+   </property>
+  </action>
+  <action name="actionCompress">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/compress.png</normaloff>:/resources_images/img/compress.png</iconset>
+   </property>
+   <property name="text">
+    <string>Compress</string>
+   </property>
+  </action>
+  <action name="actionConvert_to_JSON">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/json2.png</normaloff>:/resources_images/img/json2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Convert to JSON</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/close.png</normaloff>:/resources_images/img/close.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/help.png</normaloff>:/resources_images/img/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionAbout_us">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/about us.png</normaloff>:/resources_images/img/about us.png</iconset>
+   </property>
+   <property name="text">
+    <string>About us</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/Custom-Icon-Design-Pretty-Office-7-Save-as.ico</normaloff>:/resources_images/img/Custom-Icon-Design-Pretty-Office-7-Save-as.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/Paomedia-Small-N-Flat-Floppy.ico</normaloff>:/resources_images/img/Paomedia-Small-N-Flat-Floppy.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionClear_all">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/clear all.png</normaloff>:/resources_images/img/clear all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Clear all</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionmaximize">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/maximize.png</normaloff>:/resources_images/img/maximize.png</iconset>
+   </property>
+   <property name="text">
+    <string>Maximize</string>
+   </property>
+  </action>
+  <action name="actionminimize">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/Minimize.png</normaloff>:/resources_images/img/Minimize.png</iconset>
+   </property>
+   <property name="text">
+    <string>Minimize</string>
+   </property>
+  </action>
+  <action name="actionNormal_size">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/normal size.jpg</normaloff>:/resources_images/img/normal size.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Normal size</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_errors">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/design-tools-icon-error-icon-search-icon.jpg</normaloff>:/resources_images/img/design-tools-icon-error-icon-search-icon.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Check for errors</string>
+   </property>
+  </action>
+  <action name="actionfont">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/font.png</normaloff>:/resources_images/img/font.png</iconset>
+   </property>
+   <property name="text">
+    <string>font</string>
+   </property>
+  </action>
+  <action name="actionMode_switch">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/75-759829_png-file-svg-night-mode-icon-download-transparent.png</normaloff>:/resources_images/img/75-759829_png-file-svg-night-mode-icon-download-transparent.png</iconset>
+   </property>
+   <property name="text">
+    <string>Mode switch</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+M</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/undo_last.png</normaloff>:/resources_images/img/undo_last.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/redo_lasst.png</normaloff>:/resources_images/img/redo_lasst.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionZoom_in">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/zoom in.png</normaloff>:/resources_images/img/zoom in.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom in</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+=</string>
+   </property>
+  </action>
+  <action name="actionZoom_out">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/zoom out.png</normaloff>:/resources_images/img/zoom out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom out</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionZoom_to_default">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/zoom to default.png</normaloff>:/resources_images/img/zoom to default.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom to default</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/cut.jfif</normaloff>:/resources_images/img/cut.jfif</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCop">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/copy.png</normaloff>:/resources_images/img/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/paste.jfif</normaloff>:/resources_images/img/paste.jfif</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionMinify">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/minify.png</normaloff>:/resources_images/img/minify.png</iconset>
+   </property>
+   <property name="text">
+    <string>Minify</string>
+   </property>
+  </action>
+  <action name="actionDeCompress">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/DeComp.png</normaloff>:/resources_images/img/DeComp.png</iconset>
+   </property>
+   <property name="text">
+    <string>DeCompress</string>
+   </property>
+  </action>
+  <action name="actionRestor_XML">
+   <property name="icon">
+    <iconset resource="myResources.qrc">
+     <normaloff>:/resources_images/img/xml restore.png</normaloff>:/resources_images/img/xml restore.png</iconset>
+   </property>
+   <property name="text">
+    <string>Restor XML</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="myResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
