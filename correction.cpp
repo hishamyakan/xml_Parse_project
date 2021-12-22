@@ -1,3 +1,12 @@
+/******************************************************************************
+ *
+ * File Name: correction.h
+ *
+ * Description: Source file for error detection and correction functions
+ *
+ * Author: Nada Yousef and Nada Amgad
+ *
+ *******************************************************************************/
 #include "correction.h"
 #include <fstream>
 #include <iostream>
@@ -9,6 +18,7 @@ using namespace std;
 #include "Stack.h"
 #include <stack>
 
+#define CLOSING_TAG(OP_TAG) "</"+OP_TAG.substr(1)
 
 /*
  * Description :
@@ -34,8 +44,6 @@ static void sort(vector<int> &arr){
 			return;
 	}
 }
-
-
 
 
 
@@ -204,7 +212,7 @@ static vector<string> removeExtraTags(vector<string> v){
 	for(int i = 0 ; i < (int)v.size() ; i++){
 
 		/*If the current index is in the list of error indices, ignore this tag*/
-		if(in(indices , i) )
+		if(in(indices , i) && isClosingTag(v[i]))
 			continue;
 		finalists.push_back(v[i]);
 
@@ -215,6 +223,73 @@ static vector<string> removeExtraTags(vector<string> v){
 }
 
 
+
+
+static vector<string> AdjustOpeningTags(vector <string> v){
+
+	Stack<string> myStack;
+	Stack<int> locs;
+	vector<int> indices;
+	vector<string> extra;
+	int i ;
+	for( i = 0 ; i < (int)v.size() ; i++){
+
+		if(isOpeningTag(v[i])){
+			myStack.push(v[i]);
+			locs.push(i);
+		}
+
+		else if(isClosingTag(v[i])){
+
+				if(!areMatching(myStack.top(), v[i])){
+
+
+					int loc = locs.top();
+					if( !isTag(v[loc+1]) ){
+						indices.push_back(loc+2);
+					}
+					else
+						indices.push_back(i);
+
+					extra.push_back(CLOSING_TAG(myStack.pop()));
+					locs.pop();
+
+
+				}
+
+				myStack.pop();
+				locs.pop();
+
+		}
+	}
+
+	while(!myStack.isEmpty()){
+
+		//indices.push_back(i++);
+
+		extra.push_back(CLOSING_TAG(myStack.pop()));
+
+	}
+
+	vector<string> correct;
+	int j = 0 ;
+	for(int i = 0 ; i < (int)v.size() ; i++){
+
+		if(in(indices, i)){
+			correct.push_back(extra[j++]);
+		}
+
+		correct.push_back(v[i]);
+
+	}
+
+	while(j<(int)extra.size()){
+
+		correct.push_back(extra[j++]);
+
+	}
+	return correct;
+}
 /*
  * Description :
  * Converts a vector of correct tags and data to a tree and returns a pointer to its root.
@@ -284,7 +359,7 @@ static Node* correctTree(vector<string> v){
  */
 Node* correctTree(string file_path){
 
-	return correctTree(removeExtraTags(removeBounds(FileToVector(file_path))));
+	return correctTree(AdjustOpeningTags(removeExtraTags(removeBounds(FileToVector(file_path)))));
 
 }
 

@@ -1,4 +1,12 @@
-
+/******************************************************************************
+ *
+ * File Name: correction.h
+ *
+ * Description: Header file for error detection and correction functions
+ *
+ * Author: Nada Yousef and Nada Amgad
+ *
+ *******************************************************************************/
 #ifndef CORRECTION_H_
 #define CORRECTION_H_
 
