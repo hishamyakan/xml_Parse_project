@@ -10,6 +10,7 @@
 #include"helpwindow.h"
 #include"aboutus.h"
 #include<fixdialog.h>
+#include "graphvisualwindow.h"
 
 
 
@@ -20,6 +21,7 @@
 #include<QFileDialog>
 #include<QFileInfo>
 #include<QTextStream>
+#include<QFileInfo>
 
 #include<QFont>
 #include<QFontDialog>
@@ -139,6 +141,13 @@ void MainWindow:: titleChange(void)
 }
 
 
+void MainWindow::help()
+{
+    HelpWindow window1;
+    window1.setModal(true);
+    window1.exec();
+
+}
 
 
 //Clear button
@@ -177,15 +186,14 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionHelp_triggered()
 {
-    HelpWindow window1;
-    window1.setModal(true);
-    window1.exec();
+     this->help();
 }
 
 
 
 void MainWindow::on_actionAbout_us_triggered()
 {
+
     Aboutus window2;
     window2.setModal(true);
     window2.exec();
@@ -405,9 +413,10 @@ void MainWindow::on_button_Close_clicked()
 //********************************************Help Button *******************************************************
 void MainWindow::on_button_help_clicked()
 {
-    HelpWindow window1;
-    window1.setModal(true);
-    window1.exec();
+     this->help();
+//    HelpWindow window1;
+//    window1.setModal(true);
+//    window1.exec();
 }
 
 
@@ -886,3 +895,79 @@ void MainWindow::bubbleSort(int *arr, int n)
             break;
     }
 }
+
+ string MainWindow::WriteGraphScript(vector<string> &vect1,vector<vector<string>>&vect2)
+{
+     string aux = "node [shape = \"record\" color = \"black\" style = \"filled\"  fillcolor = \"yellow\"]\n" ;
+         string s = "digraph myGraph{ \n "+aux;
+         for(int i =0;i< (int)vect1.size();i++)
+         {
+
+             s += "\""+vect1[i]+"\"" +" [ label = \" {" +vect1[i]+ " | Number of follows: "+ to_string(vect2[i].size())   +"} \" ]\n";
+             s += "\""+vect1[i]+"\""+ "-> {";
+             //int j = 0;
+             //for (const auto & name : vect2[i] )
+             for(int j =0;j<(int)vect2[i].size()-1; j++)
+             {
+
+
+                 s += "\""+vect2[i][j]+"\"" +","+" ";
+             }
+
+             if(vect2[i].size() != 0)
+             {
+             s += "\""+vect2[i][vect2[i].size()-1]+"\"";
+             }
+             s += "} \n";
+         }
+          s += "}";
+
+         return s;
+}
+
+void MainWindow::on_actionView_Graph_triggered()
+{
+    this->my_window_file_name= my_file_name.toStdString();
+    XML_File myNewFile(this->my_window_file_name);
+
+    SocialGraph myGraph = myNewFile.toGraph();
+
+    vector<string> vect1 = myGraph.UserNames();
+    vector<vector<string>> vect2 = myGraph.StringList();
+
+
+    QFileInfo fi(my_file_name);
+    //fi.FilePath();
+    QString s(fi.absolutePath()+"/textFile.dot");
+     QString s2(my_file_name+".dot");
+
+    QFile file(s);
+     //QMessageBox::warning(this,"title",file.fileName());
+
+
+    if(!file.open(QFile::WriteOnly | QFile::Text))
+    {
+        QMessageBox::warning(this,"title","file not open");
+    }
+    QTextStream out(&file);
+    QString text = QString::fromStdString( MainWindow::WriteGraphScript(vect1,vect2));
+    out<<text;
+    file.flush();
+    file.close();
+
+   GraphVisualWindow myWindow(this ,fi.absolutePath(),my_file_name);
+   myWindow.setModal(true);
+   myWindow.exec();
+
+   file.remove();
+
+
+}
+
+
+
+void MainWindow::on_actionAnlayise_Graph_triggered()
+{
+
+}
+

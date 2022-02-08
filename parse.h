@@ -1,3 +1,13 @@
+/******************************************************************************
+ *
+ * File Name: parse.h
+ *
+ * Description: Header file for Parsing functions prototypes.
+ *
+ * Author: Hussam Eldin Wael
+ *
+ *******************************************************************************/
+
 #ifndef PARSE_H_
 #define PARSE_H_
 #include <iostream>

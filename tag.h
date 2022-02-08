@@ -1,3 +1,12 @@
+/******************************************************************************
+ *
+ * File Name: tag.h
+ *
+ * Description: Header file for tag-related functions
+ *
+ * Author: Hussam Eldin Wael
+ *
+ *******************************************************************************/
 #ifndef TAG_H_
 #define TAG_H_
 

@@ -1,12 +1,12 @@
-/******************************************************************************
- *
- * File Name: correction.h
- *
- * Description: Header file for error detection and correction functions
- *
- * Author: Nada Yousef and Nada Amgad
- *
- *******************************************************************************/
+//*****************************************************************************
+// *
+// * File Name: correction.h
+// *
+// * Description: Header file for error detection and correction functions
+// *
+// * Author: Nada Yousef and Nada Amgad
+// *
+// *******************************************************************************/
 #ifndef CORRECTION_H_
 #define CORRECTION_H_
 
@@ -23,14 +23,14 @@ using namespace std;
  *******************************************************************************/
 typedef struct{
 
-	string name;
-	int loc;
+    string name;
+    int loc;
 
 }Tag;
 
 struct Tag2 {
-	string tag;
-	int line;
+    string tag;
+    int line;
 };
 
 /*
@@ -45,4 +45,4 @@ Node* correctTree(string file_path);
  */
 vector<Tag2> Errors(string file_path);
 
-#endif /* CORRECTION_H_ */
+#endif //* CORRECTION_H_

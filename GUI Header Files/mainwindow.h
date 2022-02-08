@@ -112,10 +112,19 @@ private slots:
 
     void on_actionMinify_triggered();
 
+    void on_actionView_Graph_triggered();
+
+    void on_actionAnlayise_Graph_triggered();
+
 private:
     Ui::MainWindow *ui;
     myHighlighter *highlighter;
     string my_window_file_name = " ";
+
+
+    void static help();
+   static string WriteGraphScript(vector<string> &vect1,vector<vector<string>>&vect2);
+
 
 
 };

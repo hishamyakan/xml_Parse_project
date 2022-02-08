@@ -32,102 +32,102 @@ template <typename T>
 class Stack{
 
 
-	/******************************************************************************
-	 *                                Attributes                                   *
-	 *******************************************************************************/
+    /******************************************************************************
+     *                                Attributes                                   *
+     *******************************************************************************/
 
 private:
-	T data[MAX_SIZE];
-	int pos ;
+    T data[MAX_SIZE];
+    int pos ;
 
 public:
 
-	/******************************************************************************
-	 *                                Methods                                      *
-	 *******************************************************************************/
+    /******************************************************************************
+     *                                Methods                                      *
+     *******************************************************************************/
 
 
-	/*
-	 * Description :
-	 * Stack empty Constructor.
-	 */
+    /*
+     * Description :
+     * Stack empty Constructor.
+     */
 
-	Stack() {
+    Stack() {
 
-		pos = -1 ;
+        pos = -1 ;
 
-	}
-
-
-	/*
-	 * Description :
-	 * Returns true if the stack is empty.
-	 */
-	bool isEmpty() {
-
-		return pos == -1;
-	}
-
-	/*
-	 * Description :
-	 * Returns true if the stack is full.
-	 */
-	bool isFull() {
-		return pos == MAX_SIZE-1;
-
-	}
+    }
 
 
-	/*
-	 * Description :
-	 * Pushes an element on the Stack.
-	 * If the Stack is full, It does nothing.
-	 */
-	void push(T word) {
-		if( !isFull() )
-			data[++pos] = word;
-	}
+    /*
+     * Description :
+     * Returns true if the stack is empty.
+     */
+    bool isEmpty() {
+
+        return pos == -1;
+    }
+
+    /*
+     * Description :
+     * Returns true if the stack is full.
+     */
+    bool isFull() {
+        return pos == MAX_SIZE-1;
+
+    }
 
 
-	/*
-	 * Description :
-	 * Pops an element from the Stack.
-	 * If the Stack is empty, It does nothing.
-	 */
-	T pop() {
-		if(!isEmpty())
-			return data[pos--] ;
-
-		return T();
-
-	}
+    /*
+     * Description :
+     * Pushes an element on the Stack.
+     * If the Stack is full, It does nothing.
+     */
+    void push(T word) {
+        if( !isFull() )
+            data[++pos] = word;
+    }
 
 
-	/*
-	 * Description :
-	 * Returns the element at the top of the Stack.
-	 * If the Stack is empty, It displays an error message.
-	 */
-	T top(){
-		if(pos == -1) {
-			cout<<"The Stack is Empty";
-			return T() ;
-		}
+    /*
+     * Description :
+     * Pops an element from the Stack.
+     * If the Stack is empty, It does nothing.
+     */
+    T pop() {
+        if(!isEmpty())
+            return data[pos--] ;
 
-		return data[pos];
-	}
+        return T();
+
+    }
 
 
-	/*
-	 * Description :
-	 * Prints the elements inside the Stack from top to bottom.
-	 */
-	void print() {
-		for(int i = pos ; i >= 0 ; i--) {
+    /*
+     * Description :
+     * Returns the element at the top of the Stack.
+     * If the Stack is empty, It displays an error message.
+     */
+    T top(){
+        if(pos == -1) {
+            cout<<"The Stack is Empty";
+            return T() ;
+        }
 
-			cout<<data[i]<<endl;
-		}
-	}
+        return data[pos];
+    }
+
+
+    /*
+     * Description :
+     * Prints the elements inside the Stack from top to bottom.
+     */
+    void print() {
+        for(int i = pos ; i >= 0 ; i--) {
+
+            cout<<data[i]<<endl;
+        }
+    }
 
 };
 

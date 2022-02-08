@@ -182,10 +182,17 @@
     <addaction name="separator"/>
     <addaction name="actionfont"/>
    </widget>
+   <widget class="QMenu" name="menuGraph">
+    <property name="title">
+     <string>Graph </string>
+    </property>
+    <addaction name="actionView_Graph"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuedit"/>
    <addaction name="menuView"/>
    <addaction name="menuTools"/>
+   <addaction name="menuGraph"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -492,6 +499,11 @@
    </property>
    <property name="text">
     <string>Restor XML</string>
+   </property>
+  </action>
+  <action name="actionView_Graph">
+   <property name="text">
+    <string>View Graph</string>
    </property>
   </action>
  </widget>
